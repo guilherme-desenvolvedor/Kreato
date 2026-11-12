@@ -1,0 +1,8 @@
+{
+  "name": "Kreato — Plataforma Criativa para Criadores de Conteúdo",
+  "description": "Ambiente completo para criadores de conteúdo organizarem ideias, desenvolverem roteiros, planejarem publicações e potencializarem seu processo com IA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

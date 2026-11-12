@@ -1,0 +1,2 @@
+# Algumas dependências declaram peers incompatíveis entre si; sem isso o "npm install" falha com ERESOLVE.
+legacy-peer-deps=true

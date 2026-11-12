@@ -1,0 +1,19 @@
+# Blueprint do Render (https://render.com): "New > Blueprint" e aponte para o repositório.
+services:
+  - type: web
+    name: kreator
+    runtime: node
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VITE_SUPABASE_URL
+        sync: false   # https://SEU-PROJETO.supabase.co
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false   # chave PUBLICÁVEL (sb_publishable_...)
+      - key: GEMINI_API_KEY
+        sync: false   # chave do Gemini (fica só no servidor)
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash

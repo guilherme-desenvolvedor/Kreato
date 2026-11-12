@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0A0A0C" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Kreato" />
+    <title>Kreato — Estúdio Criativo & Copiloto Krea para Criadores</title>
+    <meta name="description" content="Ambiente completo para criadores de conteúdo organizarem ideias, desenvolverem roteiros estruturados, planejarem publicações e acelerarem a produção com o copiloto Krea." />
+    <meta property="og:title" content="Kreato — Estúdio Criativo & Copiloto Krea para Criadores" />
+    <meta property="og:description" content="Ambiente completo para criadores de conteúdo organizarem ideias, desenvolverem roteiros estruturados, planejarem publicações e acelerarem a produção com o copiloto Krea." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-kreato-bg text-kreato-main min-h-screen flex flex-col md:flex-row antialiased selection:bg-orange-200 selection:text-orange-950">
+    <!-- App Shell Wrapper (shown for authenticated app pages) -->
+    <div id="app" class="flex-1 flex flex-col md:flex-row min-h-screen w-full relative">
+      <!-- Mobile Top Navigation Bar -->
+      <header id="app-mobile-header" class="md:hidden flex items-center justify-between px-4 py-3 bg-kreato-surface border-b border-kreato sticky top-0 z-30">
+        <div class="flex items-center gap-2.5">
+          <button id="mobile-menu-toggle" type="button" aria-label="Abrir menu de navegação" class="p-2 rounded-lg text-kreato-main hover:bg-[#EFE8D8] dark:hover:bg-[#2A241F] transition-colors cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+          <a href="#dashboard" class="flex items-center gap-2">
+            <img src="/logo.png" alt="Logo Kreato" class="w-9 h-9 object-contain drop-shadow-xs" />
+            <span class="font-extrabold tracking-tight text-xl text-kreato-main">Kreato</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-1.5">
+          <!-- Dark mode toggle mobile -->
+          <button id="mobile-theme-toggle" type="button" class="p-2 rounded-lg text-kreato-muted hover:text-kreato-main transition-colors cursor-pointer" title="Modo Escuro / Claro">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button id="global-search-mobile-btn" class="p-2 rounded-lg text-kreato-muted hover:text-kreato-main transition-colors cursor-pointer" title="Buscar ideias e roteiros">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </button>
+          <button id="quick-create-mobile-btn" class="px-2.5 py-1.5 text-xs font-semibold bg-kreato-orange text-white rounded-lg hover:bg-kreato-orange-hover transition-colors flex items-center gap-1 shadow-xs cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            <span>Criar</span>
+          </button>
+          <img id="mobile-avatar" src="/src/assets/images/creator_avatar_1794167049130.jpg" alt="Perfil do criador" class="w-7 h-7 rounded-full object-cover border border-kreato ml-1" />
+        </div>
+      </header>
+
+      <!-- Mobile Backdrop -->
+      <div id="mobile-sidebar-backdrop" class="fixed inset-0 bg-[#231F1B]/50 backdrop-blur-xs z-40 hidden md:hidden transition-opacity"></div>
+
+      <!-- Left Sidebar Navigation -->
+      <aside id="sidebar" class="fixed md:sticky top-0 bottom-0 left-0 w-64 bg-kreato-surface border-r border-kreato flex flex-col z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out h-screen overflow-y-auto">
+        <!-- Brand / Identity with Official Logo -->
+        <div class="p-5 pb-4 flex items-center justify-between border-b border-kreato-subtle">
+          <a href="#dashboard" class="flex items-center gap-3 group">
+            <img src="/logo.png" alt="Logo Kreato" class="w-11 h-11 object-contain drop-shadow-xs group-hover:scale-105 transition-transform" />
+            <div class="flex flex-col">
+              <span class="font-extrabold tracking-tight text-2xl text-kreato-main leading-tight">Kreato</span>
+              <span class="text-[9px] text-kreato-muted tracking-widest uppercase font-semibold">Creator Studio</span>
+            </div>
+          </a>
+          <button id="mobile-menu-close" class="md:hidden p-1.5 text-kreato-muted hover:text-kreato-main rounded-md cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <!-- Quick Create Button in Sidebar -->
+        <div class="px-4 py-3">
+          <button id="sidebar-quick-create" class="w-full py-2.5 px-3 bg-kreato-orange hover:bg-kreato-orange-hover text-white rounded-xl font-semibold text-xs transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            <span>Novo Conteúdo</span>
+          </button>
+        </div>
+
+        <!-- Navigation Menu Items -->
+        <nav class="flex-1 px-3 py-2 space-y-1">
+          <div class="px-3 pb-1 text-[10px] font-semibold text-kreato-subtle uppercase tracking-wider">Espaço de Criação</div>
+
+          <a href="#dashboard" data-page="dashboard" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D]">
+            <svg class="w-4 h-4 text-kreato-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="#ideias" data-page="ideias" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors text-kreato-muted hover:text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D]">
+            <svg class="w-4 h-4 text-kreato-yellow shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+            <span class="flex-1">Minhas ideias</span>
+            <span id="nav-ideas-count" class="text-[11px] font-mono text-kreato-subtle bg-kreato-bg px-2 py-0.5 rounded-full tabular-nums">0</span>
+          </a>
+
+          <!-- RENAME: KREA -->
+          <a href="#ai" data-page="ai" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors text-kreato-muted hover:text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D]">
+            <svg class="w-4 h-4 text-kreato-purple shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <span class="flex-1">Krea</span>
+            <span class="px-1.5 py-0.2 rounded-sm bg-kreato-purple/20 text-kreato-purple text-[10px] font-mono font-bold">AI</span>
+          </a>
+
+          <a href="#roteiros" data-page="roteiros" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors text-kreato-muted hover:text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D]">
+            <svg class="w-4 h-4 text-kreato-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+            <span class="flex-1">Roteiros</span>
+            <span id="nav-scripts-count" class="text-[11px] font-mono text-kreato-subtle bg-kreato-bg px-2 py-0.5 rounded-full tabular-nums">0</span>
+          </a>
+
+          <a href="#planejamento" data-page="planejamento" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors text-kreato-muted hover:text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D]">
+            <svg class="w-4 h-4 text-kreato-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            <span>Planejamento</span>
+          </a>
+
+          <a href="#biblioteca" data-page="biblioteca" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors text-kreato-muted hover:text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D]">
+            <svg class="w-4 h-4 text-[#2D8A56] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            <span>Biblioteca</span>
+          </a>
+
+          <div class="pt-4 px-3 pb-1 text-[10px] font-semibold text-kreato-subtle uppercase tracking-wider">Desempenho</div>
+
+          <a href="#evolucao" data-page="evolucao" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors text-kreato-muted hover:text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D]">
+            <svg class="w-4 h-4 text-kreato-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+            <span>Minha evolução</span>
+          </a>
+
+          <a href="#configuracoes" data-page="configuracoes" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors text-kreato-muted hover:text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D]">
+            <svg class="w-4 h-4 text-kreato-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            <span>Configurações</span>
+          </a>
+
+          <div class="pt-4 px-3 pb-1 text-[10px] font-semibold text-kreato-subtle uppercase tracking-wider">Comunidade</div>
+
+          <a href="#sugestoes" data-page="sugestoes" class="nav-link flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors text-kreato-muted hover:text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D]">
+            <svg class="w-4 h-4 text-kreato-yellow shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            <span class="flex-1">Sugestões & Roadmap</span>
+            <span class="text-[9px] font-bold text-kreato-orange bg-kreato-orange/15 px-1.5 py-0.5 rounded-full">NOVO</span>
+          </a>
+
+          <!-- In-App PWA Install Trigger -->
+          <div class="pt-2 px-1">
+            <button id="pwa-sidebar-install-btn" type="button" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-kreato-muted hover:text-kreato-main hover:bg-[#FAF0E6] dark:hover:bg-[#2A231D] transition-colors cursor-pointer">
+              <svg class="w-4 h-4 text-kreato-purple shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>Instalar como App</span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- User Profile Card & Logout in Sidebar Footer -->
+        <div class="p-3 border-t border-kreato-subtle mt-auto bg-kreato-bg/60">
+          <div class="flex items-center justify-between p-2 rounded-xl hover:bg-kreato-surface transition-colors">
+            <div class="flex items-center gap-2.5 min-w-0 cursor-pointer" id="sidebar-user-card">
+              <img id="sidebar-avatar" src="/src/assets/images/creator_avatar_1794167049130.jpg" alt="Foto de perfil" class="w-8 h-8 rounded-full object-cover border border-kreato shrink-0" />
+              <div class="flex-1 min-w-0">
+                <div id="sidebar-username" class="text-xs font-bold text-kreato-main truncate">Marina Silva</div>
+                <div id="sidebar-userniche" class="text-[10px] text-kreato-muted truncate">@marinacriativa</div>
+              </div>
+            </div>
+
+            <!-- Logout Button -->
+            <button id="sidebar-logout-btn" type="button" class="p-1.5 text-kreato-muted hover:text-red-500 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors cursor-pointer" title="Encerrar sessão (Sair)">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area with Header -->
+      <div id="app-main-column" class="flex-1 flex flex-col min-w-0 min-h-screen">
+        <!-- Desktop Header Bar -->
+        <header id="app-desktop-header" class="hidden md:flex items-center justify-between px-8 py-4 bg-kreato-surface/90 backdrop-blur-md border-b border-kreato sticky top-0 z-20">
+          <!-- Left: Page Breadcrumb & Contextual Title -->
+          <div class="flex items-center gap-3">
+            <span id="header-context-title" class="text-sm font-bold text-kreato-main">Dashboard</span>
+            <span class="text-kreato-subtle text-xs">/</span>
+            <span id="header-context-subtitle" class="text-xs text-kreato-muted">Visão Geral do Criador</span>
+          </div>
+
+          <!-- Center/Right: Global Search, Theme Switcher & Quick Actions -->
+          <div class="flex items-center gap-3">
+            <!-- Global Search -->
+            <div class="relative w-64 lg:w-72">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-kreato-subtle">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+              <input id="global-search-input" type="text" placeholder="Buscar ideias, roteiros, temas..." class="w-full pl-9 pr-8 py-1.5 text-xs bg-white dark:bg-[#1A1613] border border-kreato rounded-xl text-kreato-main placeholder:text-kreato-subtle transition-all focus:bg-white" />
+              <button id="global-search-clear" class="absolute inset-y-0 right-0 pr-2.5 flex items-center text-kreato-subtle hover:text-kreato-main hidden">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </button>
+            </div>
+
+            <!-- Dark / Light Theme Toggle Desktop -->
+            <button id="desktop-theme-toggle" type="button" class="p-2 text-kreato-muted hover:text-kreato-main rounded-xl hover:bg-kreato-surface transition-colors cursor-pointer" title="Alternar Modo Escuro / Claro">
+              <svg id="theme-toggle-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            </button>
+
+
+
+            <!-- Notification Bell -->
+            <button id="header-notifications-btn" class="relative p-2 text-kreato-muted hover:text-kreato-main rounded-xl hover:bg-kreato-surface transition-colors cursor-pointer" title="Notificações">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+              <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-kreato-orange"></span>
+            </button>
+
+            <!-- Quick Create Button -->
+            <button id="header-quick-create" class="px-3.5 py-1.5 bg-kreato-orange hover:bg-kreato-orange-hover text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              <span>Criar</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- View Dynamic Mount Point -->
+        <main id="main-view" class="flex-1 w-full mx-auto">
+          <!-- Views injected dynamically via modular pure JS/TS -->
+        </main>
+      </div>
+    </div>
+
+    <!-- Reusable Modal Container -->
+    <div id="modal-container" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#181512]/60 backdrop-blur-xs hidden">
+      <div id="modal-content" class="bg-kreato-surface border border-kreato rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <!-- Modal body dynamically populated -->
+      </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+
+    <!-- Application Script Entry Point -->
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

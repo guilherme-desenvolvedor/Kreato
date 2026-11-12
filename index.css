@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --kreato-bg: #F2EBDD;
+    --kreato-surface: #FAF7F2;
+    --kreato-surface-hover: #F5EFE4;
+    --kreato-border: #E5DCCB;
+    --kreato-border-subtle: #EBE3D4;
+    --kreato-text: #231F1B;
+    --kreato-text-muted: #72685C;
+    --kreato-text-subtle: #988D80;
+    --kreato-orange: #F28C45;
+    --kreato-orange-hover: #E2792F;
+    --kreato-orange-light: #FDF3EB;
+    --kreato-blue: #527DBB;
+    --kreato-blue-light: #EFF4FB;
+    --kreato-purple: #9274C8;
+    --kreato-purple-light: #F5F1FA;
+    --kreato-yellow: #E9BD4D;
+    --kreato-yellow-light: #FCF8ED;
+  }
+
+  :root.dark {
+    --kreato-bg: #0A0A0C;
+    --kreato-surface: #141417;
+    --kreato-surface-hover: #1C1C21;
+    --kreato-border: #26262C;
+    --kreato-border-subtle: #1E1E23;
+    --kreato-text: #F4F4F7;
+    --kreato-text-muted: #9E9EA9;
+    --kreato-text-subtle: #686873;
+    --kreato-orange-light: #2B150A;
+    --kreato-blue-light: #0D1929;
+    --kreato-purple-light: #1D132B;
+    --kreato-yellow-light: #261E0A;
+  }
+
+  body {
+    background-color: var(--kreato-bg);
+    color: var(--kreato-text);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9CEB9;
+  border-radius: 9999px;
+}
+:root.dark ::-webkit-scrollbar-thumb {
+  background: #26262C;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C4B69D;
+}
+:root.dark ::-webkit-scrollbar-thumb:hover {
+  background: #383842;
+}
+
+/* Tabular figures utility */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Kreato custom dynamic utility classes */
+.bg-kreato-bg { background-color: var(--kreato-bg); }
+.bg-kreato-surface { background-color: var(--kreato-surface); }
+.bg-kreato-surface-hover:hover { background-color: var(--kreato-surface-hover); }
+
+.bg-kreato-orange { background-color: #F28C45; }
+.bg-kreato-orange-hover:hover { background-color: #E2792F; }
+.bg-kreato-orange-light { background-color: var(--kreato-orange-light); }
+
+.bg-kreato-blue { background-color: #527DBB; }
+.bg-kreato-blue-light { background-color: var(--kreato-blue-light); }
+
+.bg-kreato-purple { background-color: #9274C8; }
+.bg-kreato-purple-light { background-color: var(--kreato-purple-light); }
+
+.bg-kreato-yellow { background-color: #E9BD4D; }
+.bg-kreato-yellow-light { background-color: var(--kreato-yellow-light); }
+
+.text-kreato-main { color: var(--kreato-text); }
+.text-kreato-muted { color: var(--kreato-text-muted); }
+.text-kreato-subtle { color: var(--kreato-text-subtle); }
+
+.text-kreato-orange { color: #F28C45; }
+.text-kreato-blue { color: #527DBB; }
+.text-kreato-purple { color: #9274C8; }
+.text-kreato-yellow { color: #E9BD4D; }
+
+.border-kreato { border-color: var(--kreato-border); }
+.border-kreato-subtle { border-color: var(--kreato-border-subtle); }
+.border-kreato-orange { border-color: #F28C45; }
+.border-kreato-blue { border-color: #527DBB; }
+.border-kreato-purple { border-color: #9274C8; }
+.border-kreato-yellow { border-color: #E9BD4D; }
+
+/* Micro-transitions */
+.transition-kreato {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Card styling adhering to anti-slop rules with dark mode pairing */
+.kreato-card {
+  background-color: var(--kreato-surface);
+  border: 1px solid var(--kreato-border);
+  border-radius: 12px;
+}
+
+.kreato-card-interactive {
+  background-color: var(--kreato-surface);
+  border: 1px solid var(--kreato-border);
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.kreato-card-interactive:hover {
+  background-color: var(--kreato-surface-hover);
+  border-color: #CBBDA4;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.08);
+}
+:root.dark .kreato-card-interactive:hover {
+  border-color: #383842;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.6);
+}
+
+/* Focus ring */
+input:focus, textarea:focus, select:focus, button:focus-visible {
+  outline: 2px solid #F28C45;
+  outline-offset: 1px;
+}

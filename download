@@ -1,0 +1,9 @@
+node_modules
+dist
+server.js
+.git
+.aistudio
+.env
+.env.*
+!.env.example
+*.log
